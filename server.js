@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 app.get('/api/**/*', (req, res) => {
   const url = `${RUBY_GEMS_URL}${req.originalUrl}`;
-
+  console.log('url', url);
   request.get(url, (err, response, body) => {
     if(response.statusCode === 400) {
       res.send([]);
