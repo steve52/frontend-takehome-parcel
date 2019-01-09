@@ -1,21 +1,40 @@
 import React from 'react';
-import Search from './search/Search';
-import Saved from './saved/Saved';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+
+import Search from './pages/Search/SearchContainer';
+import Saved from './pages/Saved/SavedContainer';
+
+import './App.scss';
 
 export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Search for new Gems</Link>
-            </li>
-            <li>
-              <Link to="/saved">View Saved Gems</Link>
-            </li>
-          </ul>
+        <div className="container col-8 p-3">
+          <nav>
+            <ul className="nav nav-tabs">
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/"
+                  exact
+                >
+                  Search for new Gems
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/saved"
+                  exact
+                >
+                  View Saved Gems
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
 
           <Route path="/" exact component={Search}></Route>
           <Route path="/saved" component={Saved}></Route>
